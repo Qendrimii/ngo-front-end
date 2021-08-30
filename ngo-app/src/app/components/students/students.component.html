@@ -1,0 +1,56 @@
+
+  <div class="row">
+
+
+    
+    <div class="col-md-12">
+
+      <div class="alert alert-success" *ngIf="message">
+        {{message}}
+      </div>
+      <h1>Lista e Studenteve</h1>
+      <div class="alert alert-success" *ngIf="false">
+        Post the msg
+      </div>
+      <img src="../../assets/search.png" width="25em" height="25em" class="imgSearch">
+      <input type="text" class="form-control mr-sm-2" placeholder="Kërko sipas emrit..." [(ngModel)]="searchTerm" />
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Emri</th>
+            <th>Mbiemri</th>
+            <th>Grupi</th>
+            <th>Trajneri</th>
+            <th>Aktiv?</th>
+            <th>Perditeso</th>
+            <th>Fshije</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <!--Perdorim nje *ngFor per me i marr te gjitha elementet nga DBS-->
+          <tr *ngFor="let student of filteredStudents">
+            <td> {{student.firstName}} </td>
+            <td> {{student.lastName}}</td>
+            <td> {{student.idg.groupName}}</td>
+            <td> {{student.idt.firstName}}</td>
+            <td *ngIf="student.isActive">Po</td><td *ngIf="!student.isActive">Jo</td>
+            <td><button class="btn btn-success" (click)="updateStudent(student.ids)">Update</button></td><!-- (click)="updateTodo(todo.id)" ne buton-->
+            <td><button class="btn btn-warning" (click)="deleteStudent(student.ids)">Delete</button></td><!--(click)="deleteTodo(todo.id)"  ne buton-->
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <div class="row">
+
+        <button class="btn btn-success" (click)="addStudent()">Shto</button><!--  per me funksionalizu butonin me metode-->
+
+
+      </div>
+
+    </div>
+  </div>
+

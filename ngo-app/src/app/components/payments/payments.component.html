@@ -1,0 +1,31 @@
+<h1>Pagesat</h1>
+<div class="alert alert-success" *ngIf="message">
+  {{message}}
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Lloji i pageses</th>
+      <th>Perditeso</th>
+      <th>Fshije</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let payment of payments">
+      <td> {{payment.lloji}}</td>
+      <td><button (click)="updatePayment(payment.idp)" class="btn btn-success">Update</button></td>
+      <td><button (click)="deletePayment(payment.idp)" class="btn btn-warning">Delete</button></td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+<div class="row">
+
+  <button (click)="addPayment()" class="btn btn-success">Shto</button>
+
+
+</div>
+

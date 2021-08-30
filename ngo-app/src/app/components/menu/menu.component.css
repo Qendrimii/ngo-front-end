@@ -1,0 +1,11 @@
+
+header {
+  background-color: #162f22;
+}
+
+nav div {
+  margin: 0px 4em 0px -0.5em;
+}
+header nav li:hover {
+  background-color: #335744;
+}

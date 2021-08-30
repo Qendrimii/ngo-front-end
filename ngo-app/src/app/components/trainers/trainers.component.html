@@ -1,0 +1,39 @@
+    <h1>Lista e Trajnerëve</h1>
+    <div class="alert alert-success" *ngIf="false">
+      Post the msg
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Emri</th>
+          <th>Mbiemri</th>
+          <th>Datelindja</th>
+          <th>A eshte aktiv?</th>
+          <th>Perditeso</th>
+          <th>Fshije</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <!--Perdorim nje *ngFor per me i marr te gjitha elementet nga DBS-->
+        <tr *ngFor="let trainer of trainers">
+          <td> {{trainer.firstName}} </td>
+          <td> {{trainer.lastName}}</td>
+          <td> {{trainer.birthdate | date}}</td>
+          <td *ngIf="trainer.isActive">Po</td>
+          <td *ngIf="!trainer.isActive">Jo</td>
+          <td><button class="btn btn-success" (click)="updateTrainer(trainer.id)">Update</button></td>
+          <td><button class="btn btn-warning" (click)="deleteTrainer(trainer.id)">Delete</button></td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <div class="row">
+
+      <button class="btn btn-success" (click)="addTrainer()">Shto</button>
+
+    </div>
+

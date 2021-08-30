@@ -1,0 +1,15 @@
+<div class="container">
+
+
+  <div class="alert alert-warning" *ngIf="paymentForm.dirty &&  paymentForm.invalid">Enter Valid Values</div>
+
+  <form (ngSubmit)="!paymentForm.invalid && savePayment()" #paymentForm="ngForm">
+    <fieldset class="form-group">
+      <label>Emri i pageses</label>
+      <input type="text" #lloji="ngModel"
+             [(ngModel)]="payment.lloji" name="description"
+             required="required" class="form-control" />
+    </fieldset>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>

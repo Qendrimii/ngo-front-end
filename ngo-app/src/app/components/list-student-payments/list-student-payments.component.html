@@ -1,0 +1,61 @@
+
+<div class="row">
+
+
+  <div class="col-md-11">
+
+    <div class="alert alert-success" *ngIf="message">
+      {{message}}
+    </div>
+
+    <h1>Lista e Statusit te pagesave per student</h1>
+    <div class="alert alert-success" *ngIf="false">
+      Post the msg
+    </div>
+
+    <!--@OneToOne
+    private Students student;
+
+    @OneToOne
+    private Payments payment;
+
+    private Date data;
+    private String username;-->
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Studenti</th>
+          <th>Gjendja e pageses</th>
+          <th>Muaji</th>
+          <th>Trajneri</th>
+          <th>Grupi</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <!--Perdorim nje *ngFor per me i marr te gjitha elementet nga DBS-->
+        <tr *ngFor="let studentstatus of studentStatus">
+          <td> {{studentstatus.student.firstName}} {{studentstatus.student.lastName}} </td>
+          <td> {{studentstatus.payment.lloji}}</td>
+          <td> {{studentstatus.data | date}} </td>
+          <td> {{studentstatus.student.idt.firstName}}</td>
+          <td> {{studentstatus.student.idg.groupName}}</td>
+          <td><button class="btn btn-success" (click)="updateStudentStatus(studentstatus.idps)">Update</button></td><!-- (click)="updateTodo(todo.id)" ne buton-->
+          <td><button class="btn btn-warning" (click)="deleteStudentStatus(studentstatus.idps)">Delete</button></td><!--(click)="deleteTodo(todo.id)"  ne buton-->
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <div class="row">
+
+      <button class="btn btn-success" (click)="addStudentStatus()">Shto</button><!--  per me funksionalizu butonin me metode-->
+
+
+    </div>
+
+  </div>
+</div>
+

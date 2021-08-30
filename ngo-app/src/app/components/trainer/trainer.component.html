@@ -1,0 +1,52 @@
+<div class="container">
+
+
+  <div class="alert alert-warning" *ngIf="trainerForm.dirty &&  trainerForm.invalid">Enter Valid Values</div>
+  <div class="alert alert-warning" *ngIf="trainerForm.dirty &&  birthdate.invalid">Enter Valid Target Values</div>
+  <div class="alert alert-warning" *ngIf="trainerForm.dirty &&  firstName.invalid">Enter at least 1 character in Description</div>
+  <div class="alert alert-warning" *ngIf="trainerForm.dirty &&  lastName.invalid">Enter at least 1 character in Description</div>
+
+
+  <form (ngSubmit)="!trainerForm.invalid && saveTrainer()" #trainerForm="ngForm">
+    <fieldset class="form-group">
+      <label>First Name</label>
+      <input type="text" #firstName="ngModel"
+             [(ngModel)]="trainer.firstName" name="firstname"
+             required="required" class="form-control" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Last Name</label>
+      <input type="text" #lastName="ngModel"
+             [(ngModel)]="trainer.lastName" name="lastname"
+             required="required" class="form-control" />
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Data e Lindjes</label>
+      <input type="date" #birthdate="ngModel" [ngModel]="trainer.birthdate | date:'yyyy-MM-dd'"
+             (ngModelChange)="trainer.birthdate = $event" name="targetDate"
+             required="required" />
+    </fieldset>
+
+    <fieldset class="form-group">
+
+      <label>A eshte aktiv?</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          Aktiv
+          <input type="radio" value="true" name="isActive" #isActive="ngModel"
+                 [(ngModel)]="trainer.isActive" />
+        </label>
+        <label class="radio-inline">
+          Jo-aktiv
+          <input type="radio" value="false" name="isActive" #isActive="ngModel"
+                 [(ngModel)]="trainer.isActive" />
+        </label>
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>
+
+

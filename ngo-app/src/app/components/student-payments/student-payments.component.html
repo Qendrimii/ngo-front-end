@@ -1,0 +1,35 @@
+<div class="container">
+
+
+  <div class="alert alert-warning" *ngIf="studentStatusForm.dirty &&  studentStatusForm.invalid">Enter Valid Values</div>
+
+
+
+  <form (ngSubmit)="!studentStatusForm.invalid && saveStudentStatus()" #studentStatusForm="ngForm">
+    <fieldset class="form-group">
+      <label>Studenti</label>
+      <select class="form-control"
+              [(ngModel)]="studentStatus.student" name="student"
+              required="required">
+        <option *ngFor="let student of student" [ngValue]="student">
+          {{student.firstName}} {{student.lastName}} 
+        </option>
+      </select>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Lloji i pageses</label>
+      <select class="form-control"
+              [(ngModel)]="studentStatus.payment" name="payment"
+              required="required">
+        <option *ngFor="let payment of payment" [ngValue]="payment">
+          {{payment.lloji}}
+        </option>
+      </select>
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>
+
+
